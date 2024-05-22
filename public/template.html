@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Allan Lancioni - Consultoria em Tecnologia e IA</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans:wght@400;600&display=swap"
+    rel="stylesheet">
+  <style>
+    body {
+      @apply bg-gray-900 text-gray-200 font-sans;
+    }
+
+    a {
+      @apply text-blue-400 hover:text-blue-600;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      @apply font-serif;
+      font-family: 'Merriweather', serif;
+    }
+
+    p {
+      @apply font-sans;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .logo {
+      font-family: 'Merriweather', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      transition: color 0.3s ease;
+    }
+
+    .logo:hover {
+      color: #3b82f6;
+    }
+
+    .menu-icon {
+      transition: transform 0.3s ease;
+    }
+
+    .menu-icon.open {
+      transform: rotate(90deg);
+    }
+
+    .menu-items {
+      transition: max-height 0.3s ease-out;
+      max-height: 0;
+      overflow: hidden;
+    }
+
+    .menu-items.open {
+      max-height: 500px;
+      /* Ajuste conforme necessário */
+    }
+
+    .nav-item {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-item:after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background-color: #3b82f6;
+      transition: all 0.3s ease;
+    }
+
+    .nav-item:hover:after {
+      left: 0;
+      width: 100%;
+    }
+
+    .fixed-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: #1f2937;
+      z-index: 50;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .hidden-header {
+      transform: translateY(-100%);
+    }
+
+
+    body {
+      @apply bg-gray-900 text-gray-200 font-sans;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(17, 24, 39, 0.85));
+    }
+
+    .hero h1 {
+      font-family: 'Merriweather', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 1.25rem;
+      color: #d1d5db;
+      margin-bottom: 2rem;
+    }
+
+    .hero .cta-button {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      background-color: #3b82f6;
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      transition: background-color 0.3s ease;
+    }
+
+    .hero .cta-button:hover {
+      background-color: #2563eb;
+    }
+
+    .hero .decorative-lines {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero .decorative-lines::before,
+    .hero .decorative-lines::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 70%;
+      width: 2px;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateX(-50%);
+    }
+
+    .hero .decorative-lines::after {
+      left: calc(50% + 100px);
+      transform: translateX(-50%);
+    }
+
+    @media (min-width: 768px) {
+      .hero h1 {
+        font-size: 4rem;
+      }
+      .hero p {
+        font-size: 1.5rem;
+      }
+      .hero .cta-button {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+</head>
+
+
+<body class="bg-gray-900 text-gray-200 font-sans">
+  <!-- Header -->
+  <header id="header" class="bg-gray-800 text-white p-4 shadow-md">
+    <nav class="container mx-auto flex justify-between items-center">
+      <div class="text-2xl font-bold">
+        <a href="#" class="logo">Allan Lancioni</a>
+      </div>
+      <div class="hidden md:flex space-x-6">
+        <a href="#" class="nav-item hover:text-blue-400 transition duration-300">Home</a>
+        <a href="#" class="nav-item hover:text-blue-400 transition duration-300">Sobre</a>
+        <a href="#" class="nav-item hover:text-blue-400 transition duration-300">Blog</a>
+        <a href="#" class="nav-item hover:text-blue-400 transition duration-300">Portfólio</a>
+        <a href="#" class="nav-item hover:text-blue-400 transition duration-300">Contato</a>
+      </div>
+      <div class="md:hidden">
+        <button id="menu-btn" class="text-white focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 menu-icon" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+    <div id="menu" class="md:hidden menu-items">
+      <a href="#" class="block py-2 px-4 hover:bg-gray-700 transition duration-300">Home</a>
+      <a href="#" class="block py-2 px-4 hover:bg-gray-700 transition duration-300">Sobre</a>
+      <a href="#" class="block py-2 px-4 hover:bg-gray-700 transition duration-300">Blog</a>
+      <a href="#" class="block py-2 px-4 hover:bg-gray-700 transition duration-300">Portfólio</a>
+      <a href="#" class="block py-2 px-4 hover:bg-gray-700 transition duration-300">Contato</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto p-8">
+    <!-- Hero Section -->
+    <section class="hero relative rounded-md">
+      <div class="decorative-lines"></div>
+      <div class="relative z-10">
+        <h1>Impulsione sua Produtividade com Nossas Soluções de IA</h1>
+        <p>Inovação, tecnologia de ponta e sofisticação para transformar seu negócio.</p>
+        <a href="#" class="cta-button">Entre em Contato</a>
+      </div>
+    </section>
+
+
+    <!-- Recent Projects -->
+    <section class="my-16">
+      <h2 class="text-3xl font-bold text-gray-100 mb-6">Projetos Recentes</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-gray-800 shadow-lg rounded-lg overflow-hidden">
+          <img src="https://via.placeholder.com/400x300" alt="Projeto 1" class="w-full">
+          <div class="p-4">
+            <h3 class="text-2xl font-bold text-gray-100">Projeto 1</h3>
+            <p class="text-gray-400">Descrição breve do projeto 1.</p>
+          </div>
+        </div>
+        <div class="bg-gray-800 shadow-lg rounded-lg overflow-hidden">
+          <img src="https://via.placeholder.com/400x300" alt="Projeto 2" class="w-full">
+          <div class="p-4">
+            <h3 class="text-2xl font-bold text-gray-100">Projeto 2</h3>
+            <p class="text-gray-400">Descrição breve do projeto 2.</p>
+          </div>
+        </div>
+        <div class="bg-gray-800 shadow-lg rounded-lg overflow-hidden">
+          <img src="https://via.placeholder.com/400x300" alt="Projeto 3" class="w-full">
+          <div class="p-4">
+            <h3 class="text-2xl font-bold text-gray-100">Projeto 3</h3>
+            <p class="text-gray-400">Descrição breve do projeto 3.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recent Articles -->
+    <section class="my-16">
+      <h2 class="text-3xl font-bold text-gray-100 mb-6">Artigos Recentes</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-gray-800 shadow-lg rounded-lg overflow-hidden">
+          <img src="https://via.placeholder.com/400x300" alt="Artigo 1" class="w-full">
+          <div class="p-4">
+            <h3 class="text-2xl font-bold text-gray-100">Artigo 1</h3>
+            <p class="text-gray-400">Resumo breve do artigo 1.</p>
+          </div>
+        </div>
+        <div class="bg-gray-800 shadow-lg rounded-lg overflow-hidden">
+          <img src="https://via.placeholder.com/400x300" alt="Artigo 2" class="w-full">
+          <div class="p-4">
+            <h3 class="text-2xl font-bold text-gray-100">Artigo 2</h3>
+            <p class="text-gray-400">Resumo breve do artigo 2.</p>
+          </div>
+        </div>
+        <div class="bg-gray-800 shadow-lg rounded-lg overflow-hidden">
+          <img src="https://via.placeholder.com/400x300" alt="Artigo 3" class="w-full">
+          <div class="p-4">
+            <h3 class="text-2xl font-bold text-gray-100">Artigo 3</h3>
+            <p class="text-gray-400">Resumo breve do artigo 3.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white p-4 mt-8">
+    <div class="container mx-auto text-center">
+      <p>&copy; 2024 Allan Lancioni. Todos os direitos reservados.</p>
+      <div class="mt-4">
+        <a href="https://linkedin.com/in/allan-lancioni" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        {' | '}
+        <a href="https://github.com/allan-lancioni" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
+
+<script>
+  const header = document.getElementById('header')
+  const menuBtn = document.getElementById('menu-btn')
+  const menu = document.getElementById('menu')
+  const menuIcon = document.querySelector('.menu-icon')
+  let lastScrollY = window.scrollY
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > lastScrollY) {
+      header.classList.add('hidden-header')
+    } else {
+      header.classList.remove('hidden-header')
+    }
+    lastScrollY = window.scrollY
+
+    if (window.scrollY > 100) {
+      header.classList.add('fixed-header')
+    } else {
+      header.classList.remove('fixed-header')
+    }
+  })
+
+  menuBtn.addEventListener('click', () => {
+    menu.classList.toggle('open')
+    menuIcon.classList.toggle('open')
+  });
+</script>
