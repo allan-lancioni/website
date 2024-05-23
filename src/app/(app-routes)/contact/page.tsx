@@ -58,10 +58,10 @@ const ChatInterface: React.FC = () => {
     if (chatDiv.current) {
       chatDiv.current.scroll({
         top: chatDiv.current.scrollHeight,
-        behavior: 'smooth'
-      });
+        behavior: 'smooth',
+      })
     }
-  }, [messages, isTyping]); 
+  }, [messages, isTyping])
 
   const sendMessage = () => {
     if (input.trim() === '') return
@@ -74,7 +74,9 @@ const ChatInterface: React.FC = () => {
     simulateIncomingMessage("I'm checking that information for you.")
   }
 
-  const handleMessageKeyPress = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+  const handleMessageKeyPress = (
+    e: React.KeyboardEvent<HTMLTextAreaElement>
+  ) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault()
       sendMessage()
@@ -83,7 +85,10 @@ const ChatInterface: React.FC = () => {
 
   return (
     <section className="bg-gray-800 rounded-lg shadow-lg p-2 h-[calc(100vh-6rem)] md:h-[calc(100vh-7rem)] relative">
-      <div className="chat-container overflow-auto p-4 max-h-[calc(100%-90px)] md:max-h-[calc(100%-110px)] mini-scrollbar" ref={chatDiv}>
+      <div
+        className="chat-container overflow-auto p-4 max-h-[calc(100%-90px)] md:max-h-[calc(100%-110px)] mini-scrollbar"
+        ref={chatDiv}
+      >
         {messages.map(message => (
           <div
             key={message.id}
