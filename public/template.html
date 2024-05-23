@@ -8,147 +8,10 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans:wght@400;600&display=swap"
     rel="stylesheet">
+
   <style>
-    body {
-      @apply bg-gray-900 text-gray-200 font-sans;
-    }
-
-    a {
-      @apply text-blue-400 hover:text-blue-600;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      @apply font-serif;
-      font-family: 'Merriweather', serif;
-    }
-
-    p {
-      @apply font-sans;
-      font-family: 'Open Sans', sans-serif;
-    }
-
-    .logo {
-      font-family: 'Merriweather', serif;
-      font-size: 2rem;
-      font-weight: 700;
-      color: #fff;
-      transition: color 0.3s ease;
-    }
-
-    .logo:hover {
-      color: #3b82f6;
-    }
-
-    .menu-icon {
-      transition: transform 0.3s ease;
-    }
-
-    .menu-icon.open {
-      transform: rotate(90deg);
-    }
-
-    .menu-items {
-      transition: max-height 0.3s ease-out;
-      max-height: 0;
-      overflow: hidden;
-    }
-
-    .menu-items.open {
-      max-height: 500px;
-      /* Ajuste conforme necessário */
-    }
-
-    .nav-item {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .nav-item:after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 50%;
-      width: 0;
-      height: 2px;
-      background-color: #3b82f6;
-      transition: all 0.3s ease;
-    }
-
-    .nav-item:hover:after {
-      left: 0;
-      width: 100%;
-    }
-
-    .fixed-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background-color: #1f2937;
-      z-index: 50;
-      transition: transform 0.3s ease, background-color 0.3s ease;
-    }
-
-    .hidden-header {
-      transform: translateY(-100%);
-    }
-
-
-    body {
-      @apply bg-gray-900 text-gray-200 font-sans;
-    }
-
     .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-      background: linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(17, 24, 39, 0.85));
-    }
-
-    .hero h1 {
-      font-family: 'Merriweather', serif;
-      font-size: 3rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 1rem;
-    }
-
-    .hero p {
-      font-family: 'Open Sans', sans-serif;
-      font-size: 1.25rem;
-      color: #d1d5db;
-      margin-bottom: 2rem;
-    }
-
-    .hero .cta-button {
-      font-family: 'Open Sans', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      color: #fff;
-      background-color: #3b82f6;
-      padding: 0.75rem 1.5rem;
-      border-radius: 9999px;
-      transition: background-color 0.3s ease;
-    }
-
-    .hero .cta-button:hover {
-      background-color: #2563eb;
-    }
-
-    .hero .decorative-lines {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
+      height: calc(100vh - 8rem);
     }
 
     .hero .decorative-lines::before,
@@ -159,7 +22,7 @@
       left: 70%;
       width: 2px;
       height: 100%;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.02);
       transform: translateX(-50%);
     }
 
@@ -168,45 +31,45 @@
       transform: translateX(-50%);
     }
 
-    @media (min-width: 768px) {
-      .hero h1 {
-        font-size: 4rem;
-      }
-      .hero p {
-        font-size: 1.5rem;
-      }
-      .hero .cta-button {
-        font-size: 1.25rem;
-      }
+    .hidden-header {
+      transform: translateY(-100%);
     }
+
   </style>
 </head>
 
-
 <body class="bg-gray-900 text-gray-200 font-sans">
   <!-- Header -->
-  <header id="header" class="bg-gray-800 text-white p-4 shadow-md">
+  <header id="header"
+    class="bg-gray-800 text-white p-4 shadow-md top-0 left-0 right-0 z-50 transition-transform duration-300">
     <nav class="container mx-auto flex justify-between items-center">
       <div class="text-2xl font-bold">
-        <a href="#" class="logo">Allan Lancioni</a>
+        <a href="#" class="logo text-white text-xl font-bold transition-colors duration-300 hover:text-blue-400">Allan
+          Lancioni</a>
       </div>
       <div class="hidden md:flex space-x-6">
-        <a href="#" class="nav-item hover:text-blue-400 transition duration-300">Home</a>
-        <a href="#" class="nav-item hover:text-blue-400 transition duration-300">Sobre</a>
-        <a href="#" class="nav-item hover:text-blue-400 transition duration-300">Blog</a>
-        <a href="#" class="nav-item hover:text-blue-400 transition duration-300">Portfólio</a>
-        <a href="#" class="nav-item hover:text-blue-400 transition duration-300">Contato</a>
+        <a href="#"
+          class="nav-item relative font-semibold overflow-hidden hover:text-blue-400 transition duration-300">Home</a>
+        <a href="#"
+          class="nav-item relative font-semibold overflow-hidden hover:text-blue-400 transition duration-300">Sobre</a>
+        <a href="#"
+          class="nav-item relative font-semibold overflow-hidden hover:text-blue-400 transition duration-300">Blog</a>
+        <a href="#"
+          class="nav-item relative font-semibold overflow-hidden hover:text-blue-400 transition duration-300">Portfólio</a>
+        <a href="#"
+          class="nav-item relative font-semibold overflow-hidden hover:text-blue-400 transition duration-300">Contato</a>
       </div>
       <div class="md:hidden">
         <button id="menu-btn" class="text-white focus:outline-none">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 menu-icon" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 menu-icon transition-transform duration-300"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
           </svg>
         </button>
       </div>
     </nav>
-    <div id="menu" class="md:hidden menu-items">
+    <div id="menu"
+      class="md:hidden menu-items max-h-0 font-semibold overflow-hidden transition-max-height duration-300 ease-out">
       <a href="#" class="block py-2 px-4 hover:bg-gray-700 transition duration-300">Home</a>
       <a href="#" class="block py-2 px-4 hover:bg-gray-700 transition duration-300">Sobre</a>
       <a href="#" class="block py-2 px-4 hover:bg-gray-700 transition duration-300">Blog</a>
@@ -218,15 +81,19 @@
   <!-- Main Content -->
   <main class="container mx-auto p-8">
     <!-- Hero Section -->
-    <section class="hero relative rounded-md">
-      <div class="decorative-lines"></div>
+    <section
+      class="hero relative flex flex-col items-center justify-center h-[calc(100vh-8rem)] p-12 text-center bg-gradient-to-br from-gray-800 to-gray-900 rounded-md">
+      <div class="decorative-lines absolute w-full h-full pointer-events-none z-0"></div>
       <div class="relative z-10">
-        <h1>Impulsione sua Produtividade com Nossas Soluções de IA</h1>
-        <p>Inovação, tecnologia de ponta e sofisticação para transformar seu negócio.</p>
-        <a href="#" class="cta-button">Entre em Contato</a>
+        <h1 class="font-serif text-3xl md:text-5xl font-bold text-white mb-4">Impulsione sua Produtividade com Nossas
+          Soluções de IA</h1>
+        <p class="font-sans text-lg md:text-xl text-gray-300 mb-8">Inovação, tecnologia de ponta e sofisticação para
+          transformar seu negócio.</p>
+        <a href="#"
+          class="cta-button font-sans text-lg md:text-xl font-semibold text-white bg-blue-600 px-6 py-3 rounded-full transition-colors duration-300 hover:bg-blue-700">Entre
+          em Contato</a>
       </div>
     </section>
-
 
     <!-- Recent Projects -->
     <section class="my-16">
@@ -290,41 +157,42 @@
     <div class="container mx-auto text-center">
       <p>&copy; 2024 Allan Lancioni. Todos os direitos reservados.</p>
       <div class="mt-4">
-        <a href="https://linkedin.com/in/allan-lancioni" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://linkedin.com/in/allan-lancioni" target="_blank" rel="noopener noreferrer"
+          class="hover:text-blue-400 transition duration-300">LinkedIn</a>
         {' | '}
-        <a href="https://github.com/allan-lancioni" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://github.com/allan-lancioni" target="_blank" rel="noopener noreferrer"
+          class="hover:text-blue-400 transition duration-300">GitHub</a>
       </div>
     </div>
   </footer>
 
+  <script>
+    const header = document.getElementById('header')
+    const menuBtn = document.getElementById('menu-btn')
+    const menu = document.getElementById('menu')
+    const menuIcon = document.querySelector('.menu-icon')
+    let lastScrollY = window.scrollY
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > lastScrollY) {
+        header.classList.add('hidden-header')
+      } else {
+        header.classList.remove('hidden-header')
+      }
+      lastScrollY = window.scrollY
+
+      if (window.scrollY > 100) {
+        header.classList.add('fixed')
+      } else {
+        header.classList.remove('fixed')
+      }
+    })
+
+    menuBtn.addEventListener('click', () => {
+      menu.classList.toggle('open')
+      menuIcon.classList.toggle('open')
+    });
+  </script>
 </body>
 
 </html>
-
-<script>
-  const header = document.getElementById('header')
-  const menuBtn = document.getElementById('menu-btn')
-  const menu = document.getElementById('menu')
-  const menuIcon = document.querySelector('.menu-icon')
-  let lastScrollY = window.scrollY
-
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > lastScrollY) {
-      header.classList.add('hidden-header')
-    } else {
-      header.classList.remove('hidden-header')
-    }
-    lastScrollY = window.scrollY
-
-    if (window.scrollY > 100) {
-      header.classList.add('fixed-header')
-    } else {
-      header.classList.remove('fixed-header')
-    }
-  })
-
-  menuBtn.addEventListener('click', () => {
-    menu.classList.toggle('open')
-    menuIcon.classList.toggle('open')
-  });
-</script>

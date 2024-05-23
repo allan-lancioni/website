@@ -1,25 +1,85 @@
-import React from 'react'
-import Layout from '../../../components/Layout'
+import React, { useMemo } from 'react'
+import Hero from './Hero'
+import DemoCard from '@/components/DemoCard'
+import Link from 'next/link'
 
 const Home: React.FC = () => {
+  const projects = useMemo(
+    () => [
+      {
+        title: 'Projeto 1',
+        href: '/porfolio/projeto-1',
+        description: 'Descrição breve do projeto 1.',
+        img: 'https://via.placeholder.com/400x300',
+      },
+      {
+        title: 'Projeto 2',
+        href: '/porfolio/projeto-2',
+        description: 'Descrição breve do projeto 2.',
+        img: 'https://via.placeholder.com/400x300',
+      },
+      {
+        title: 'Projeto 3',
+        href: '/porfolio/projeto-3',
+        description: 'Descrição breve do projeto 3.',
+        img: 'https://via.placeholder.com/400x300',
+      },
+    ],
+    []
+  )
+
+  const articles = useMemo(
+    () => [
+      {
+        title: 'Artigo 1',
+        href: '/blog/article-1',
+        description: 'Descrição breve do artigo 1.',
+        img: 'https://via.placeholder.com/400x300',
+      },
+      {
+        title: 'Artigo 2',
+        href: '/blog/article-2',
+        description: 'Descrição breve do artigo 2.',
+        img: 'https://via.placeholder.com/400x300',
+      },
+      {
+        title: 'Artigo 3',
+        href: '/blog/article-3',
+        description: 'Descrição breve do artigo 3.',
+        img: 'https://via.placeholder.com/400x300',
+      },
+    ],
+    []
+  )
+
   return (
-    <Layout>
-      <div className="container mx-auto p-4">
-        <section className="text-center my-16">
-          <h1 className="text-5xl font-bold text-gray-800">Consultoria em Tecnologia e Inteligência Artificial</h1>
-          <p className="text-xl text-gray-600 mt-4">Ajudando empresas a inovar e crescer com soluções tecnológicas avançadas.</p>
-          <a href="/contact" className="mt-8 inline-block bg-blue-600 text-white px-6 py-3 rounded-full">Entre em contato</a>
-        </section>
-        <section className="my-16">
-          <h2 className="text-3xl font-bold text-gray-800">Projetos Recentes</h2>
-          {/* Miniaturas de projetos vão aqui */}
-        </section>
-        <section className="my-16">
-          <h2 className="text-3xl font-bold text-gray-800">Artigos Recentes</h2>
-          {/* Links para artigos recentes vão aqui */}
-        </section>
-      </div>
-    </Layout>
+    <>
+      <Hero />
+      <section className="my-16">
+        <div className="flex items-baseline space-x-2">
+          <h2 className="text-3xl font-bold text-gray-100 mb-6">
+            Projetos Recentes
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map(project => (
+            <DemoCard key={project.title} {...project} />
+          ))}
+        </div>
+      </section>
+
+      <section className="my-16">
+        <h2 className="text-3xl font-bold text-gray-100 mb-6">
+          Artigos Recentes
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {articles.map(article => (
+            <DemoCard key={article.title} {...article} />
+          ))}
+        </div>
+      </section>
+    </>
   )
 }
 
