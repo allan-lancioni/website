@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
         <span>|</span>
         <a href="https://github.com/allan-lancioni" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition duration-300">GitHub</a>
       </div>
-      <p className="text-sm">&copy; 2024 Allan Lancioni. Todos os direitos reservados.</p>
+      <p className="text-xs md:text-sm">&copy; 2024 Allan Lancioni. Todos os direitos reservados.</p>
     </div>
   </footer>
   )
