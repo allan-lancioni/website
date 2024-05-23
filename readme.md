@@ -1,38 +1,47 @@
-# Personal Website Project 🌐
 
-## Project Overview 📝
 
-This project is aimed at creating a personal website that showcases my professional background, projects, and blog posts. The website is built using Next.js for the frontend to leverage its capabilities for server-side rendering and static site generation, ensuring optimal performance and SEO benefits. The backend services, including user authentication, database management, and file storage, are powered by Firebase.
+# Allan Lancioni - Personal Website
 
-## Current Status 🚧
+## Introduction
+This is the personal website of Allan Lancioni, developed using Next.js, TypeScript, and Tailwind CSS. The purpose of this website is to showcase Allan's professional portfolio, share blog posts, and provide a platform for potential clients or employers to get in touch.
 
-**Under Construction**: The website is currently under development. Many features are in the process of being implemented and tested. 
+## Pages
+- **Home**: The main landing page with an introduction and links to other sections.
+- **About**: A page with a detailed biography and professional background.
+- **Blog**: A section for sharing articles and insights related to technology, development, and other interests.
+- **Portfolio**: A showcase of selected projects and achievements.
+- **Contact**: A form for visitors to reach out to Allan.
 
-## Features 🌟
+## Technology Stack
 
-- **Home Page**: Introduces visitors to the site owner, including a brief biography and professional interests.
-- **Content Page**: Features blog posts and articles written by the site owner. This section aims to provide valuable insights into various topics.
-- **Portfolio Page**: Displays a collection of projects and contributions. Each project has its own detailed page hosted on a subdomain for comprehensive coverage.
-
-## Technology Stack 💻
-
-- **Frontend**: Developed using Next.js.
-- **Backend**: Services provided by Firebase, including Authentication, Firestore, and Storage.
 - **Hosting**: Deployed on Vercel for seamless integration with Next.js and optimized performance.
 
-## Contact 📬
+## Frontend Technologies
+- **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
+
+## Project Structure
+- **/components**: Directory for React components.
+- **/pages**: Directory for Next.js pages.
+- **/public**: Directory for public assets such as images and fonts.
+- **/styles**: Directory for Tailwind CSS and other styles.
+- **/utils**: Directory for utility functions.
+
+## Contact
 
 If you have any suggestions, questions, or inquiries, please feel free to reach out to me:
 
 - **Name**: Allan Lancioni
 - **Role**: Consultant Specialist in Development and AI Technologies
-- **Website**: [allanlancioni.com](http://www.allanlancioni.com)
-- **Phone**: 📞 (11) 93014-0991
-- **Email**: 📧 [allanlancioni@allanlancioni.com](mailto:allanlancioni@allanlancioni.com)
-- **USP Email**: 🏫 [allan.lancioni@usp.br](mailto:allan.lancioni@usp.br)
-- **LinkedIn**: 💼 [linkedin.com/in/allan-lancioni](https://linkedin.com/in/allan-lancioni)
-- **GitHub**: 🌐 [github.com/allan-lancioni](https://github.com/allan-lancioni)
+- **Website (this!)**: [allanlancioni.com](http://www.allanlancioni.com)
+- **Phone**: (11) 93014-0991
+- **Email**: [allanlancioni@allanlancioni.com](mailto:allanlancioni@allanlancioni.com)
+- **USP Email**: [allan.lancioni@usp.br](mailto:allan.lancioni@usp.br)
+- **LinkedIn**: [linkedin.com/in/allan-lancioni](https://linkedin.com/in/allan-lancioni)
+- **GitHub**: [github.com/allan-lancioni](https://github.com/allan-lancioni)
 
-## License 📄
+## Contributing
+Feel free to open issues or submit pull requests. For major changes, please open an issue first to discuss what you would like to change.
 
+## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details.
+

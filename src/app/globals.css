@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply font-sans transition-colors duration-300;
+}
+
+body {
+  @apply bg-background text-text;
+}
+
+a {
+  @apply text-primary hover:text-secondary;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-serif;
+  font-family: 'Merriweather', serif;
+}
+
+p {
+  @apply font-sans;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.hidden-header {
+  transform: translateY(-100%);
+}
+
+#hero {
+  height: calc(100vh - 8rem);
+}
+
+#hero .decorative-lines::before,
+#hero .decorative-lines::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 70%;
+  width: 2px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.02);
+  transform: translateX(-50%);
+}
+
+#hero .decorative-lines::after {
+  left: calc(50% + 100px);
+  transform: translateX(-50%);
+}
