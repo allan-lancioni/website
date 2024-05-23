@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-800 p-8 mt-8">
+    <footer className="bg-gray-800 p-8">
     <div className="container mx-auto text-center">
       <div className="flex justify-center space-x-4 mb-4 text-xs md:text-base">
         <a href="mailto:allanlancioni@allanlancioni.com" className="hover:text-blue-400 transition duration-300 hidden md:block">allanlancioni@allanlancioni.com</a>
