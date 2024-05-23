@@ -2,7 +2,7 @@ import React from 'react'
 
 const Home: React.FC = () => {
   return (
-    <div className="container mx-auto p-4">
+    <>
       <div className="bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-lg">
         <h2 className="text-2xl font-semibold text-gray-100 mb-4">Contact</h2>
         <div className="text-lg text-gray-300">
@@ -42,7 +42,7 @@ const Home: React.FC = () => {
           </p>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

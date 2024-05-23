@@ -53,3 +53,8 @@ p {
   left: calc(50% + 100px);
   transform: translateX(-50%);
 }
+
+
+#open-menu-icon.open {
+  transform: rotate(90deg);
+}
