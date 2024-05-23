@@ -4,7 +4,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className=" relative flex flex-col items-center justify-center h-[calc(100vh-8rem)] p-12 text-center bg-gradient-to-br from-gray-800 to-gray-900 rounded-md"
+      className="relative flex flex-col items-center justify-center h-[calc(100vh-8rem)] p-12 text-center bg-gradient-to-br from-gray-800 to-gray-900 rounded-md"
     >
       <div className="decorative-lines absolute w-full h-full pointer-events-none z-0"></div>
       <div className="relative z-10">

@@ -10,14 +10,14 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > lastScrollY) {
+      setIsScrolled(window.scrollY > 100)
+      setLastScrollY(window.scrollY)
+
+      if (isScrolled && window.scrollY > lastScrollY) {
         document.getElementById('header')?.classList.add('hidden-header')
       } else {
         document.getElementById('header')?.classList.remove('hidden-header')
       }
-
-      setLastScrollY(window.scrollY)
-      setIsScrolled(window.scrollY > 100)
     }
 
     window.addEventListener('scroll', handleScroll)
@@ -41,27 +41,28 @@ const Header = () => {
       className="bg-gray-800 text-white p-4 shadow-md top-0 left-0 right-0 z-50 transition-transform duration-300"
     >
       <nav className="container mx-auto flex justify-between items-center">
-        <div className="text-2xl font-bold">
-          <Link href="#" className="logo text-white text-xl font-bold transition-colors duration-300 hover:text-blue-400">
-            Allan Lancioni
-          </Link>
-        </div>
+        <Link
+          href="/"
+          className="font-serif text-white text-xl font-bold transition-colors duration-300 hover:text-blue-400"
+        >
+          Allan Lancioni
+        </Link>
         <div className="hidden md:flex space-x-6">
           {navItems.map(item => (
             <Link
               key={item.name}
               href={item.href}
-              className="nav-item relative font-semibold overflow-hidden text-white hover:text-blue-400 transition duration-300"
+              className="nav-item relative overflow-hidden text-white hover:text-blue-400 transition duration-300"
             >
               {item.name}
             </Link>
           ))}
         </div>
         <div className="md:hidden">
-          <button id="menu-btn" className="text-white focus:outline-none">
+          <button id="menu-btn" className={`text-white focus:outline-none transition-all duration-300 ease-out ${isMenuOpen && 'rotate-90'}`} onClick={() => setIsMenuOpen(isOpen => !isOpen)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-8 w-8 menu-icon transition-transform duration-300"
+              className="h-8 w-8 menu-icon"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -76,8 +77,7 @@ const Header = () => {
           </button>
         </div>
       </nav>
-      {isMenuOpen && (
-        <div className="md:hidden menu-items max-h-0 font-semibold overflow-hidden transition-max-height duration-300 ease-out">
+        <div className="md:hidden font-semibold overflow-hidden transition-all duration-300 ease-out" style={{ maxHeight: isMenuOpen ? 500 : 0 }}>
           {navItems.map(item => (
             <Link
               key={item.name}
@@ -88,7 +88,6 @@ const Header = () => {
             </Link>
           ))}
         </div>
-      )}
     </header>
   )
 }
