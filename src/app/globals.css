@@ -11,7 +11,7 @@ body {
 }
 
 a {
-  @apply text-primary hover:text-secondary;
+  @apply text-secondary hover:text-primary;
 }
 
 h1,
@@ -27,10 +27,6 @@ h6 {
 p {
   @apply font-sans;
   font-family: 'Open Sans', sans-serif;
-}
-
-.hidden-header {
-  transform: translateY(-100%);
 }
 
 #hero {
@@ -52,9 +48,4 @@ p {
 #hero .decorative-lines::after {
   left: calc(50% + 100px);
   transform: translateX(-50%);
-}
-
-
-#open-menu-icon.open {
-  transform: rotate(90deg);
 }
