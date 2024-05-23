@@ -26,7 +26,9 @@ export default function RootLayout({
         style={{ minHeight: '100vh' }}
       >
         <Header />
-        <main className="container mx-auto p-8 flex-grow">{children}</main>
+        <div className=" bg-background flex-grow">
+          <main className="container mx-auto p-4 md:p-8 flex-grow">{children}</main>
+        </div>
         <Footer />
         <Analytics />
         <SpeedInsights />

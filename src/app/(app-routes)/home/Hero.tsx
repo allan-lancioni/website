@@ -17,7 +17,7 @@ const Hero = () => {
         </p>
         <a
           href="#"
-          className="inline-flex items-center font-sans text-lg md:text-xl font-semibold bg-secondary px-6 py-3 rounded-full transition-colors duration-300 text-white hover:text-white hover:bg-primary"
+          className="inline-flex items-center font-sans text-lg md:text-xl font-semibold bg-primary px-6 py-3 rounded-full transition-colors duration-300 text-white hover:text-white hover:bg-secondary"
         >
           Entre em Contato
         </a>
