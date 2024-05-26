@@ -51,7 +51,7 @@ const ChatInterface: React.FC = () => {
         behavior: 'smooth',
       })
     }
-  }, [messages, isTyping])
+  }, [messages, isTyping, chatDiv])
 
   const sendMessage = async () => {
     if (input.trim() === '') return
