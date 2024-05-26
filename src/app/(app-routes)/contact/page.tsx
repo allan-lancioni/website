@@ -4,25 +4,15 @@ import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUp, faRobot } from '@fortawesome/free-solid-svg-icons'
 import ReactMarkdown from 'react-markdown'
+import { firstMessage } from './firstMessage'
+import { toast } from 'react-toastify'
+import { title } from 'process'
 
 interface Message {
   id: number
-  text: string
-  sender: 'user' | 'bot'
+  content: string
+  role: 'user' | 'assistant'
 }
-
-const firstMessage: string = `Olá! 👋 Sou o assistente AI de Allan. 🤖  
-&nbsp;  
-Estou aqui para ajudá-lo a explorar as soluções avançadas de IA de Allan. Se você está interessado em **integração de IA**, _modelos de aprendizado de máquina_, ou **aplicações personalizadas de IA**, estou aqui para responder suas perguntas e fornecer as informações que você precisa!  
-&nbsp;  
-Sinta-se à vontade para me perguntar qualquer coisa ou entrar em contato diretamente:  
-- 📧 Email: [allanlancioni@allanlancioni.com](mailto:allanlancioni@allanlancioni.com)  
-- 📞 Telefone: \`(11) 93014-0991\`  
-- 💼 LinkedIn: [Veja o perfil de Allan](https://linkedin.com/in/allan-lancioni)  
-- 🐱 GitHub: [Siga Allan no GitHub](https://github.com/allan-lancioni)  
-&nbsp;  
-Se preferir, apenas digite sua pergunta abaixo e pressione o botão enviar! 🔽🔽🔽
-` as any
 
 const RobotIcon: React.FC = () => {
   return (
@@ -40,15 +30,15 @@ const ChatInterface: React.FC = () => {
 
   useEffect(() => {
     // Initial bot message
-    simulateIncomingMessage(firstMessage)
+    setBotMessage(firstMessage)
   }, [])
 
-  const simulateIncomingMessage = (text: string) => {
+  const setBotMessage = (content: string) => {
     setIsTyping(true)
     setTimeout(() => {
       setMessages(prevMessages => [
         ...prevMessages,
-        { id: prevMessages.length, text, sender: 'bot' },
+        { content, role: 'assistant', id: prevMessages.length},
       ])
       setIsTyping(false)
     }, 2000) // Simulates typing delay
@@ -61,17 +51,48 @@ const ChatInterface: React.FC = () => {
         behavior: 'smooth',
       })
     }
-  }, [messages, isTyping])
+  }, [messages, isTyping, chatDiv])
 
-  const sendMessage = () => {
+  const sendMessage = async () => {
     if (input.trim() === '') return
 
-    setMessages(prevMessages => [
-      ...prevMessages,
-      { id: prevMessages.length, text: input, sender: 'user' },
-    ])
+    if (input.length > 150) {
+      toast('Too big! Please keep your message under 150 characters! 🚫😅💸', { type: 'error', icon: false })
+      return
+    }
+
+    if (messages.length > 20) {
+      toast('Too many messages! Please refresh the page to start a new conversation. 🚫😅💸', { type: 'error', icon: false })
+      return
+    }
+
+    const userMessage: Message = { content: input, role: 'user', id: messages.length}
+    const updatedMessages: Message[] = [...messages, userMessage]
+    setMessages(updatedMessages)
+
+    // Clear input after sending
     setInput('')
-    simulateIncomingMessage("I'm checking that information for you.")
+
+    // Send the message to the backend and wait for the response
+    setIsTyping(true)
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ messages: updatedMessages }),
+      })
+      if (!response.ok) {
+        throw new Error('Failed to fetch')
+      }
+      const botMessage = await response.json() as Message
+      setMessages([...updatedMessages, {...botMessage, id: updatedMessages.length}])
+    } catch (error) {
+      console.error('Error sending message:', error)
+    } finally {
+      setIsTyping(false)
+    }
   }
 
   const handleMessageKeyPress = (
@@ -91,17 +112,17 @@ const ChatInterface: React.FC = () => {
       >
         {messages.map(message => (
           <div
-            key={message.id}
-            className={`message ${message.sender}-message ${message.sender === 'user' ? 'justify-end' : 'justify-start'} my-2 text-white flex`}
+            key={'message:' + message.id}
+            className={`message ${message.role}-message ${message.role === 'user' ? 'justify-end' : 'justify-start'} my-2 text-white flex`}
           >
-            {message.sender === 'bot' && <RobotIcon />}
+            {message.role === 'assistant' && <RobotIcon />}
             <div
-              className={`p-4 ${message.sender === 'user' && 'bg-gray-700 rounded-2xl'} text-sm md:text-base max-w-[70%] md:max-w-[40%]`}
+              className={`p-4 ${message.role === 'user' && 'bg-gray-700 rounded-2xl'} text-sm md:text-base max-w-[70%] md:max-w-[40%]`}
             >
-              {message.sender === 'bot' ? (
-                <ReactMarkdown>{message.text}</ReactMarkdown>
+              {message.role === 'assistant' ? (
+                <ReactMarkdown>{message.content}</ReactMarkdown>
               ) : (
-                message.text
+                message.content
               )}
             </div>
           </div>

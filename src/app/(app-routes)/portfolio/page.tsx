@@ -1,3 +1,4 @@
+import Footer from '@/components/Footer'
 import UnderConstruction from '@/components/UnderConstruction'
 import React from 'react'
 
@@ -6,6 +7,7 @@ const Home: React.FC = () => {
     <>
       <h1 className="text-4xl font-bold mb-4">Portfolio</h1>
       <UnderConstruction />
+      <Footer />
     </>
   )
 }
