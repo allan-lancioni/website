@@ -2,6 +2,7 @@ import React, { useMemo } from 'react'
 import Hero from './Hero'
 import DemoCard from '@/components/DemoCard'
 import Link from 'next/link'
+import Footer from '@/components/Footer'
 
 const Home: React.FC = () => {
   const projects = useMemo(
@@ -79,6 +80,7 @@ const Home: React.FC = () => {
           ))}
         </div>
       </section>
+      <Footer />
     </>
   )
 }
