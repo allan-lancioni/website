@@ -1,4 +1,4 @@
-import { createChatCompletion } from '@/lib/utils/OpenAi'
+import { createChatCompletion } from '@/lib/utils/openAi'
 import { httpJSONResponse, httpErrorMissingArgs } from '@/lib/utils/httpResponse'
 
 export async function POST(req: Request) {

@@ -1,4 +1,4 @@
-import { fetchCompletion } from "@/lib/utils/OpenAi";
+import { fetchCompletion } from "@/lib/utils/openAi";
 
 export async function POST(req: Request) {
   try {
