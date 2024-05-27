@@ -6,7 +6,6 @@ import { faArrowUp, faRobot } from '@fortawesome/free-solid-svg-icons'
 import ReactMarkdown from 'react-markdown'
 import { firstMessage } from './firstMessage'
 import { toast } from 'react-toastify'
-import { title } from 'process'
 
 interface Message {
   id: number
