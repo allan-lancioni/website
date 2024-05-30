@@ -1,5 +1,3 @@
-'use server'
-
 import ReactMarkdown from 'react-markdown'
 import axios from '@/lib/utils/axiosConfig'
 import rehypeRaw from 'rehype-raw'
