@@ -9,8 +9,6 @@ export async function fetchCompletion(prompt) {
     messages: [{ role: 'system', content: prompt }],
     model: 'gpt-3.5-turbo',
   })
-  console.log(response)
-  // return response
   return response.choices[0].message
 }
 
@@ -25,8 +23,6 @@ export async function createChatCompletion(
     },
     ...messages,
   ]
-
-  console.log({payload})
 
   try {
     const response = await openai.chat.completions.create({

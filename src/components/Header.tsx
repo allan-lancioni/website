@@ -13,8 +13,6 @@ const Header = () => {
     setHiddenHeader(isScrollingDown && window.scrollY > 100)
   }, 100)
   
-  console.log("re-rendering header")
-
   const navItems = [
     { name: 'Home', href: '/' },
     { name: 'Sobre', href: '/about' },

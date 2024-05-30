@@ -19,7 +19,7 @@ const DemoCard: React.FC<DemoCardProps> = ({
     <div className="demo-card">
       <Link href={href}>
         <div className="bg-gray-800 shadow-lg rounded-lg overflow-hidden">
-          <Image src={img} alt={title} className="w-full" />
+          <Image src={img} alt={title} width={400} height={300} className="w-full" />
           <div className="p-4">
             <h3 className="text-2xl font-bold text-gray-100">{title}</h3>
             <p className="text-gray-400">{description}</p>
