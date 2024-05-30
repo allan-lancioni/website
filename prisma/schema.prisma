@@ -19,6 +19,7 @@ model BlogPost {
   title           String
   content         String
   author          String
+  slug            String   @unique
   coverImageUrl   String?  // Optional field for the cover image URL
   shortDescription String? // Optional short description of the post
   tags            String?  // Optional comma-separated tags

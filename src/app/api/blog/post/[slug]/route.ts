@@ -1,5 +1,4 @@
-// pages/api/posts/[id].ts
-import { Prisma, PrismaClient } from '@prisma/client'
+import { Prisma } from '@prisma/client'
 import {
   httpJSONResponse,
   httpErrorMissingArgs,
@@ -7,17 +6,14 @@ import {
 } from '@/lib/utils/httpResponse'
 import { NextRequest } from 'next/server'
 import { blogPostSchema } from '@/schema/BlogPost'
-
-const prisma = new PrismaClient()
+import prisma from '@/config/PrismaExtensions'
 
 export async function GET(req: NextRequest, { params }) {
-  const id: number = parseInt(params.id)
-  if (!id || isNaN(id)) {
-    return httpErrorMissingArgs('id is required')
-  }
+  if (!params.slug) return httpErrorMissingArgs('slug is required')
+
   try {
     const post = await prisma.blogPost.findUnique({
-      where: { id },
+      where: { slug: params.slug },
     })
     if (!post) {
       return httpJSONResponse(
@@ -34,17 +30,22 @@ export async function GET(req: NextRequest, { params }) {
 }
 
 export async function PUT(req: NextRequest, { params }) {
-  const id: number = parseInt(params.id)
-  if (!id || isNaN(id)) {
-    return httpErrorMissingArgs('id is required')
-  }
-  const parsedData = blogPostSchema.parse(await req.json()) as Prisma.BlogPostCreateInput
+  if (process.env.NODE_ENV !== 'development')
+    return httpError('Not allowed', 405)
+  if (!params.slug) return httpErrorMissingArgs('slug is required')
   try {
+    const parsedData = blogPostSchema
+      .partial()
+      .parse(await req.json()) as Partial<Prisma.BlogPostCreateInput>
     const post = await prisma.blogPost.update({
-      where: { id },
+      where: { slug: params.slug },
       data: parsedData,
     })
-    return httpJSONResponse(post)
+    return httpJSONResponse({
+      ...post,
+      tags: undefined,
+      tagList: post.tags.split(',').map(tag => tag.trim()),
+    })
   } catch (error) {
     console.error(error)
     return httpError(error)
@@ -52,13 +53,14 @@ export async function PUT(req: NextRequest, { params }) {
 }
 
 export async function DELETE(req: NextRequest, { params }) {
-  const id: number = parseInt(params.id)
-  if (!id || isNaN(id)) {
-    return httpErrorMissingArgs('id is required')
+  if (process.env.NODE_ENV !== 'development')
+    return httpError('Not allowed', 405)
+  if (!params.slug) {
+    return httpErrorMissingArgs('slug is required')
   }
   try {
     await prisma.blogPost.delete({
-      where: { id },
+      where: { slug: params.slug },
     })
     return httpJSONResponse({
       message: 'Post deleted successfully',
